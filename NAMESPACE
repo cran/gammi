@@ -1,0 +1,40 @@
+
+
+export(gammi.default, gammi.formula, gammi,
+       plot.gammi, predict.gammi, rowKronecker,
+       spline.basis, spline.model.matrix,
+       summary.gammi, visualizer1, visualizer2)
+
+S3method(gammi, default)
+
+S3method(gammi, formula)
+
+S3method(plot, gammi)
+
+S3method(predict, gammi)
+
+S3method(summary, gammi)
+
+S3method(print, gammi)
+
+S3method(print, summary.gammi)
+
+
+importFrom("grDevices", "colorRampPalette", "dev.flush", "dev.hold",
+           "dev.interactive", "devAskNewPage", "extendrange")
+
+importFrom("graphics", "abline", "axis", "box", "image", "lines",
+           "mtext", "par", "points", "segments", "title")
+
+import(lme4)
+
+importFrom("Matrix", "solve")
+
+importFrom("methods", "as")
+
+importFrom("stats", "as.formula", "contr.sum", "contrasts<-",
+           "gaussian", "median", "model.frame", "model.matrix",
+           "pchisq", "pf", "predict", "qnorm", "qqline", "qqnorm",
+           "quantile", "symnum", "terms", "update")
+
+importFrom("utils", "packageVersion")
