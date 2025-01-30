@@ -2,7 +2,7 @@ visualizer1 <-
   function(x, y, bars = FALSE, bw = 0.02, lty = 1, lwd = 2, col = "black", 
            lwr = NULL, upr = NULL, ci.lty = 2, ci.lwd = 1.25, ci.col = "black",
            zero = TRUE, zero.lty = 3, xlim = NULL, ylim = NULL, 
-           xlab = NULL, ylab = NULL, main = NULL, ...){
+           xlab = NULL, ylab = NULL, main = NULL, add = FALSE, ...){
     
     n <- length(x)
     y <- as.numeric(y)
@@ -15,8 +15,10 @@ visualizer1 <-
       
       xr <- range(x)
       xr <- xr[2] - xr[1]
-      plot(x, y, type = "n", pch = 19, col = col, 
-           xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab, main = main, ...)
+      if(!add){
+        plot(x, y, type = "n", pch = 19, col = col, 
+             xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab, main = main, ...)
+      }
       if(zero) abline(h = 0, lty = zero.lty)
       if(!is.null(lwr) & !is.null(upr)){
         for(i in 1:n){
@@ -29,8 +31,10 @@ visualizer1 <-
       
     } else {
       
-      plot(x, y, type = "n", lty = lty, lwd = lwd, col = col, 
-           xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab, main = main, ...)
+      if(!add){
+        plot(x, y, type = "n", lty = lty, lwd = lwd, col = col, 
+             xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab, main = main, ...)
+      }
       if(zero) abline(h = 0, lty = zero.lty)
       if(!is.null(lwr)) lines(x, lwr, lty = ci.lty, lwd = ci.lwd, col = ci.col)
       if(!is.null(upr)) lines(x, upr, lty = ci.lty, lwd = ci.lwd, col = ci.col)

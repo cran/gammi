@@ -30,6 +30,9 @@ Goldstein, H. (2011). Multilevel Statistical Models, 4th Edition. Chapter 12: Cr
 Paterson, L. (1991). Socio-economic status and educational attainment: a multidimensional and multilevel study. Evaluation and Research in Education, 5, 97-121. \doi{10.1080/09500799109533303}
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # load 'exam' help file
 ?exam
 

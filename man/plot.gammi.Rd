@@ -77,6 +77,9 @@ Three-way and higher-order interactions are not currently supported.
 \code{\link{summary.gammi}} for summarizing results from \code{gammi} objects
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # load data
 data(exam)
 

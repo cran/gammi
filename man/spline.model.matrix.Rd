@@ -67,6 +67,9 @@ For formulas of the form \code{y ~ x + z}, the constructed model matrix has the 
 See \code{\link{spline.basis}} for details on the spectral spline basis
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # load data
 data(exam)
 

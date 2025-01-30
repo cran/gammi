@@ -20,7 +20,7 @@ gammi.default <-
            ...){
     # generalized additive mixed model interface (default method)
     # Nathaniel E. Helwig (helwig@umn.edu)
-    # updated: 2024-09-11
+    # updated: 2025-01-10
     
     
     
@@ -40,6 +40,20 @@ gammi.default <-
     xnames <- colnames(x)
     if(is.null(xnames)) xnames <- paste0("x", 1:nvars)
     yname <- "y"
+    
+    ### handle na (if applicable)
+    if(missing(na.action)) na.action <- na.omit
+    tempdata <- list(x = x, y = y)
+    tempdata <- na.action(tempdata)
+    x <- tempdata$x
+    y <- tempdata$y
+    
+    ### create numeric version of y (if y is factor)
+    ynum <- y
+    if(is.factor(ynum)){
+      ylev <- levels(y)
+      ynum <- ifelse(y == ylev[1], 0.0, 1.0)
+    }
     
     ### check group
     if(missing(group)) {
@@ -339,7 +353,7 @@ gammi.default <-
     
     ### create cholesky factor of vcov matrix
     zeros <- matrix(0, nrow(RXinv), nrow(Linv))
-    vcovchol <- rbind(crossprod(mer@pp$Lambdat, cbind(t(Linv), -t(Linv) %*% RZX %*% RXinv)), 
+    vcovchol <- rbind(Matrix::crossprod(mer@pp$Lambdat, cbind(t(Linv), -t(Linv) %*% RZX %*% RXinv)), 
                       cbind(zeros, RXinv))
     
     ### assign rownames to vcovchol
@@ -402,10 +416,10 @@ gammi.default <-
     ### calculate fit information
     aic.scale.penalty <- ifelse(family$family %in% c("gaussian", "Gamma", "inverse.gaussian"), 1, 0)
     if(is.null(random)){
-      dev <- sum(family$dev.resids(y, mu, weights))
-      wtdmu <- sum(y * weights) / sum(weights)
-      null.dev <- sum(family$dev.resids(y, wtdmu, weights))
-      LL <- family$aic(y, nobs, mu, weights, dev)
+      dev <- sum(family$dev.resids(ynum, mu, weights))
+      wtdmu <- sum(ynum * weights) / sum(weights)
+      null.dev <- sum(family$dev.resids(ynum, wtdmu, weights))
+      LL <- family$aic(ynum, nobs, mu, weights, dev)
       LL <- (-1/2)*(LL - 2*aic.scale.penalty)
     } else {
       dev <- mer@devcomp$cmp[[ifelse(family$family == "gaussian" && REML, "REML", "dev")]]

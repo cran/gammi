@@ -18,7 +18,7 @@ gammi.formula <-
            ...){
     # generalized additive mixed model interface (formula method)
     # Nathaniel E. Helwig (helwig@umn.edu)
-    # updated: 2024-07-16
+    # updated: 2025-01-09
     
     
     ### get call
@@ -30,6 +30,10 @@ gammi.formula <-
     
     ### any data?
     if(missing(data)) data <- model.frame(formula)
+    
+    ### handle na (if applicable)
+    if(missing(na.action)) na.action <- na.omit
+    data <- na.action(data)
     
     ### extract response
     allvars <- all.vars(formula)

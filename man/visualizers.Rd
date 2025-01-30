@@ -12,7 +12,7 @@ Internal functions used by the \code{\link{plot.gammi}} function to visualize ma
 visualizer1(x, y, bars = FALSE, bw = 0.02, lty = 1, lwd = 2, col = "black", 
             lwr = NULL, upr = NULL, ci.lty = 2, ci.lwd = 1.25, ci.col = "black",
             zero = TRUE, zero.lty = 3, xlim = NULL, ylim = NULL, 
-            xlab = NULL, ylab = NULL, main = NULL, ...)
+            xlab = NULL, ylab = NULL, main = NULL, add = FALSE, ...)
             
 visualizer2(x, y, z, col = NULL, ncolor = 21,
             xlim = NULL, ylim = NULL, zlim = NULL, zline = 1.5,
@@ -57,6 +57,9 @@ For 1D plots: \code{xlab} and \code{ylab} are the axis labels input to the \code
   \item{main}{
 Title of the plot.
 }
+  \item{add}{
+Should lines/bars be added to current plot?
+}
   \item{zline}{
 For 2D plots: margin line for the z-axis label.
 }
@@ -92,6 +95,9 @@ The vector of colors used to construct the plots is defined as \code{colorRampPa
 \code{\link{plot.gammi}} for plotting effects from \code{gammi} objects
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # load 'exam' help file
 ?exam
 

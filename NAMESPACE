@@ -34,7 +34,7 @@ importFrom("methods", "as")
 
 importFrom("stats", "as.formula", "contr.sum", "contrasts<-",
            "gaussian", "median", "model.frame", "model.matrix",
-           "pchisq", "pf", "predict", "qnorm", "qqline", "qqnorm",
+           "na.omit", "pchisq", "pf", "predict", "qnorm", "qqline", "qqnorm",
            "quantile", "symnum", "terms", "update")
 
 importFrom("utils", "packageVersion")

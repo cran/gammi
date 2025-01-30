@@ -91,6 +91,10 @@ Note that you can override the default behavior by specifying the \code{m} argum
 \code{\link{spline.model.matrix}} for building model matrices using tensor products of spline bases
 }
 \examples{
+######***######   LOAD GAMMI PACKAGE   ######***######
+library(gammi)
+
+
 ######***######   NOMINAL SPLINE BASIS   ######***######
 
 x <- as.factor(LETTERS[1:5])

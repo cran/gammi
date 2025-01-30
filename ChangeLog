@@ -1,0 +1,21 @@
+Version 0.2   (2025-01-30)
+
+   1) Bug fix in predict.gammi() for non-Gaussian response
+	* Error occurred when requesting type = "response" predictions
+	* Problem was caused by passing data.frame to family$invlink()
+	* Updated code converts data.frame to matrix before passing
+
+   2) Bug fix in gammi.default() for binomial responses with factor "y"
+	* Error occurred when "random" was NULL and "y" was a factor
+	* Problem was caused by passing "y" (factor) to C function
+	* Updated code converts "y" to 0/1 before passing to C code
+
+   3) Bug fix to support back compatibility with older versions of R
+	* Error occurred when sparse matrix was passed to crossprod()
+	* In older/newer versions, crossprod() was from base/Matrix package
+	* Updated code explicitly uses Matrix::crossprod() to avoid ambiguity
+
+   4) Various internal improvements
+	* spline.basis() improvements for unordered factors
+	* Better NA handling for gammi (formula and default methods)
+	* Improvements to plotting functions

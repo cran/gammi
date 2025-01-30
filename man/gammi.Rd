@@ -222,6 +222,9 @@ The \code{"VarCorr"} component contains the estimated variance/covariance parame
 \examples{
 ##############***##############   EXAM EXAMPLE   ##############***##############
 
+# load 'gammi' package
+library(gammi)
+
 # load 'exam' help file
 ?exam
 

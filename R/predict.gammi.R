@@ -9,7 +9,7 @@ predict.gammi <-
            ...){
     # predict method for gammi objects
     # Nathaniel E. Helwig (helwig@umn.edu)
-    # updated: 2024-07-17
+    # updated: 2024-12-16
     
     
     ### check object
@@ -120,7 +120,7 @@ predict.gammi <-
     
     ### transform to response scale?
     if(type == "response") {
-      pred <- object$family$linkinv(pred)
+      pred <- as.data.frame(object$family$linkinv(as.matrix(pred)))
       if(se.fit | conf.int){
         pred$se <- sqrt( (se^2) * object$family$mu.eta(fit)^2 )
       }

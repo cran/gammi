@@ -4,7 +4,7 @@ spline.basis <-
            periodic = FALSE, xlev = levels(x)){
     # spline basis
     # Nathaniel E. Helwig (helwig@umn.edu)
-    # updated: 2024-07-17
+    # updated: 2025-01-10
     
     
     # This is essentially a reproduction of the rk() function in the 
@@ -21,7 +21,6 @@ spline.basis <-
       n <- length(x)
       
       # check df and knots
-      dropone <- FALSE
       if(is.null(knots)){
         if(is.null(df)) {
           df <- nlev
@@ -35,8 +34,6 @@ spline.basis <-
       } else {
         knots <- factor(knots, levels = xlev)
         df <- length(knots)
-        knotchar <- as.character(sort(knots))
-        if((df == nlev) && identical(knotchar, xlev)) dropone <- TRUE
       }
       
       # evaluate basis

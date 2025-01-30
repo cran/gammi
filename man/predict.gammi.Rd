@@ -83,6 +83,9 @@ Terms entered through the \code{random} argument of the \code{\link{gammi}} func
 \code{\link{summary.gammi}} for summarizing results from \code{gammi} objects
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # mean function
 eta <- function(x, z, additive = TRUE){
   mx1 <- cos(2 * pi * (x - pi))

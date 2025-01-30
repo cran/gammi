@@ -63,6 +63,9 @@ When the \code{random} argument is used, \code{null.deviance} and \code{r.square
 \code{\link{predict.gammi}} for predicting from \code{gammi} objects
 }
 \examples{
+# load 'gammi' package
+library(gammi)
+
 # load data
 data(exam)
 
